@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "stm32f4xx_hal.h"
 
-typedef void (*APP_CallbackTypeDef)(void);
+typedef void (*APP_CallbackTypeDef)(char *params);
 
 struct __APP_CallbackMapItemStruct
 {

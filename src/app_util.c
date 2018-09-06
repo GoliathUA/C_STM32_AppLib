@@ -124,6 +124,8 @@ APP_CallbackTypeDef APP_GetCallbackMapItem(
         if (strcmp(key, item->key) == 0) {
             return item->callback;
         }
+
+        item = item->nextItem;
     }
 
     return NULL;
