@@ -37,3 +37,28 @@ APP_CallbackTypeDef APP_GetCallbackMapItem(
     APP_CallbackMapTypeDef *map,
     char *key);
 
+/////////////////////
+//  Rendering
+////////////////////
+
+#define APP_Draw_FillRect_FUNC_PTR  void (*rect)(int16_t , int16_t , int16_t , int16_t , uint16_t)
+#define APP_Draw_FillCircle_FUNC_PTR  void (*circle)(int16_t, int16_t, int16_t, uint16_t)
+#define APP_Draw_GetColor_FUNC_PTR  uint16_t (*color)(uint8_t , uint8_t , uint8_t)
+#define APP_Draw_Printf_FUNC_PTR  void (*printf)(const char *fmt, ...)
+#define APP_Draw_SetCursor_FUNC_PTR  void (*cursor)(uint16_t x, uint16_t y)
+#define APP_Draw_FillBackground_FUNC_PTR  void (*background)(uint16_t color)
+
+typedef struct
+{
+    APP_Draw_FillRect_FUNC_PTR;
+    APP_Draw_FillCircle_FUNC_PTR;
+    APP_Draw_GetColor_FUNC_PTR;
+    APP_Draw_Printf_FUNC_PTR;
+    APP_Draw_SetCursor_FUNC_PTR;
+    APP_Draw_FillBackground_FUNC_PTR;
+
+    uint16_t backgroundColor;
+    int16_t screenWidth;
+    int16_t screenHeight;
+
+} APP_RenderingEngineTypeDef;
