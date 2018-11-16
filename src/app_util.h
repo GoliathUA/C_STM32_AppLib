@@ -1,7 +1,11 @@
+#ifndef __APP_UTIL_H
+#define __APP_UTIL_H
+
 #include <limits.h>
 #include <string.h>
 #include <stdlib.h>
 #include "stm32f4xx_hal.h"
+
 
 typedef void (*APP_CallbackTypeDef)(char *params);
 
@@ -37,6 +41,8 @@ APP_CallbackTypeDef APP_GetCallbackMapItem(
     APP_CallbackMapTypeDef *map,
     char *key);
 
+uint32_t APP_ADC_GetValue(ADC_HandleTypeDef* hadc, uint32_t channel);
+
 /////////////////////
 //  Rendering
 ////////////////////
@@ -62,3 +68,5 @@ typedef struct
     int16_t screenHeight;
 
 } APP_RenderingEngineTypeDef;
+
+#endif

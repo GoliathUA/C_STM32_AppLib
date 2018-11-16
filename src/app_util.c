@@ -130,3 +130,20 @@ APP_CallbackTypeDef APP_GetCallbackMapItem(
 
     return NULL;
 }
+
+uint32_t APP_ADC_GetValue(ADC_HandleTypeDef* hadc, uint32_t channel)
+{
+    /* Config ADC channel */
+    ADC_ChannelConfTypeDef sConfig;
+    sConfig.Channel = channel;
+    sConfig.Rank = 1;
+    sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+    HAL_ADC_ConfigChannel(hadc, &sConfig);
+    /* Start conversion */
+    HAL_ADC_Start(hadc);
+    /* Wait until finish */
+    HAL_ADC_PollForConversion(hadc, 100);
+    uint32_t value = HAL_ADC_GetValue(hadc);
+
+    return value;
+}
