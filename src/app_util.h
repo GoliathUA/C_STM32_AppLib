@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include "stm32f4xx_hal.h"
 
-
 typedef void (*APP_CallbackTypeDef)(char *params);
 
 struct __APP_CallbackMapItemStruct
@@ -53,6 +52,7 @@ uint32_t APP_ADC_GetValue(ADC_HandleTypeDef* hadc, uint32_t channel);
 #define APP_Draw_Printf_FUNC_PTR  void (*printf)(const char *fmt, ...)
 #define APP_Draw_SetCursor_FUNC_PTR  void (*cursor)(uint16_t x, uint16_t y)
 #define APP_Draw_FillBackground_FUNC_PTR  void (*background)(uint16_t color)
+#define APP_Draw_Line_FUNC_PTR  void (*line)(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
 
 typedef struct
 {
@@ -62,6 +62,7 @@ typedef struct
     APP_Draw_Printf_FUNC_PTR;
     APP_Draw_SetCursor_FUNC_PTR;
     APP_Draw_FillBackground_FUNC_PTR;
+    APP_Draw_Line_FUNC_PTR;
 
     uint16_t backgroundColor;
     int16_t screenWidth;
